@@ -653,5 +653,30 @@
 		}
 	}
 
+		function loadAllQuotationsA(){
+		$conn = connect();
+
+		if ($conn->connect_error) 
+		{
+		   	return(array("statusTxt" => "Database Not Found"));
+		}
+		$sql = "SELECT * FROM QUOTATION ORDER BY date";
+		$result = $conn->query($sql);
+		if($result->num_rows > 0) {
+			$response = array();
+			while($row = $result->fetch_assoc()) {
+				$product = array('id'=>$row['id'],'idEmployee' => $row['idEmployee'], 'card' => $row['card'],
+							'date' => $row['date'], 'total' => $row['total']);
+				array_push($response, $product);
+			}
+			$stsTxt = array("statusTxt" => "SUCCESS","array" => $response);
+
+			return ($stsTxt);
+		}
+		else {
+			return(array("statusTxt" => "Qutations Not Found"));
+		}
+	}
+
 	
 ?>

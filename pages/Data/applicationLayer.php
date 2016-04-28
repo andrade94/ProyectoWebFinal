@@ -87,6 +87,9 @@
 		case "LOADQUOTATIONS": allQuotations();
 		   	break;
 
+		case "LOADQUOTATIONSA": allQuotationsA();
+		   	break;
+
 		default:
 			break;
 	}
@@ -524,6 +527,28 @@
 		if( isset( $_SESSION['id']))
 		{
 			$result = loadAllQuotations();
+			if ($result["statusTxt"] == "SUCCESS")
+			{
+				echo json_encode($result["array"]);			
+			}
+			else
+			{
+				header('HTTP/1.1 406'+$result["statusTxt"]);
+				die ($result["statusTxt"]);
+			}
+		}
+		else
+		{
+			header('HTTP/1.1 406 Session has expired, you will be redirected to the login');
+			die('Session expired');
+		}
+	}
+
+		function allQuotationsA(){
+		session_start();
+		if( isset( $_SESSION['id']))
+		{
+			$result = loadAllQuotationsA();
 			if ($result["statusTxt"] == "SUCCESS")
 			{
 				echo json_encode($result["array"]);			
