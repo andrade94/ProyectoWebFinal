@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Employee Management</title>
+
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+    <link href="../dist/css/timeline.css" rel="stylesheet">
+    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+    <link href="../bower_components/morrisjs/morris.css" rel="stylesheet">
+    <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+    <div id="wrapper" >
+
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+
+            <!-- Main Name of Application -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                </button>
+                <a class="navbar-brand" href="index.html">ePoss - Administrator - Edit Employee</a>
+            </div>
+
+            <!-- Right Side of Navigation (USER) -->
+            <ul class="nav navbar-top-links navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="administrator.html"><i class="fa fa-user fa-fw"></i> Home</a></li>
+                        <li class="divider"></li>
+                        <li><a id = "logoutP" href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
+<!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <ul class="timeline">
+                                <li class="timeline-inverted">
+                                    <div class="timeline-badge"><i class="fa fa-check"></i>
+                                    </div>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <u><h4 class="timeline-title">Id</h4></u>
+                                        </div>
+                                        <div class="timeline-body">
+                                            <input class="form-control" placeholder="ID" id = "idP">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="timeline-badge"><i class="fa fa-check"></i>
+                                    </div>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <u><h4 class="timeline-title">Password</h4></u>
+                                        </div>
+                                        <div class="timeline-body">
+                                            <input class="form-control" placeholder="Password" id = "passwordP">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="timeline-inverted">
+                                    <div class="timeline-badge"><i class="fa fa-check"></i>
+                                    </div>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <u><h4 class="timeline-title">Name</h4></u>
+                                        </div>
+                                        <div class="timeline-body">
+                                            <input class="form-control" placeholder="Name" id = "nameP">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="timeline-badge"><i class="fa fa-check"></i>
+                                    </div>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <u><h4 class="timeline-title">Lastname</h4></u>
+                                        </div>
+                                        <div class="timeline-body">
+                                            <input class="form-control" placeholder="Lastname" id = "lastnameP">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="timeline-inverted">
+                                    <div class="timeline-badge"><i class="fa fa-check"></i>
+                                    </div>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <u><h4 class="timeline-title">Birthdate</h4></u>
+                                        </div>
+                                        <div class="timeline-body">
+                                            <input class="form-control" placeholder="Birthdate" id = "birthdateP">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="timeline-badge"><i class="fa fa-check"></i>
+                                    </div>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <u><h4 class="timeline-title">Telephone</h4></u>
+                                        </div>
+                                        <div class="timeline-body">
+                                            <input class="form-control" placeholder="Telephone" id = "telephoneP">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="timeline-inverted">
+                                    <div class="timeline-badge"><i class="fa fa-check"></i>
+                                    </div>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <u><h4 class="timeline-title">Address</h4></u>
+                                        </div>
+                                        <div class="timeline-body">
+                                            <input class="form-control" placeholder="Address" id = "addressP">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                <div class="timeline-badge"><i class="fa fa-check"></i>
+                                    </div>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-body">
+                                            <button type="button" id = "Create" class="btn btn-success">Save</button>
+                                            <button type="button" id = "Cancel" class="btn btn-danger">Cancel</button>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-8 -->
+            </div>
+            <!-- /.row -->
+    </div>
+    <!-- /#wrapper -->
+
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
+    <script src="../bower_components/raphael/raphael-min.js"></script>
+    <script src="../dist/js/sb-admin-2.js"></script>
+
+    <script type = "text/javascript">
+        var employeeID = 0; 
+        $( document ).on('ready', function() 
+        {   
+            employeeID = 0; 
+            var jsonObject = {
+                             "action" : "RETEMPLOYEE"
+                        };
+            $.ajax({
+                type: "POST",
+                url: "Data/applicationLayer.php",
+                data: jsonObject,
+                dataType: "json",
+                success: function(data)
+                {
+                    employeeID = data.id;
+                    $("#idP").val(data.id);
+                    var value = $.trim($("#idP").val());
+                    if(value.length > 0){
+                         $("#idP").prop('disabled', true);
+                    }
+                    $("#passwordP").val(data.password);
+                    $("#nameP").val(data.name);
+                    $("#lastnameP").val(data.lastname);
+                    $("#birthdateP").val(data.birthdate);
+                    $("#telephoneP").val(data.phone);
+                    $("#addressP").val(data.address);
+                },
+                error: function(errorMsg)
+                {
+                }
+            });
+
+            $("#logoutP").on("click", function(e){
+                e.preventDefault();
+                $.ajax({
+                    type: "POST",
+                    data: {"action": "ENDSESSION"},
+                    url:"data/applicationLayer.php",
+                    dataType: "json",
+                    success: function(sessionObjJson)
+                    {
+                        alert("Sesion terminada exitosamente");
+                        window.location.replace('login.html');
+                    },
+                    error: function(errorMsg)
+                    {
+                        alert("Tu sesion expiro, vuelve a iniciar sesion.");
+                        window.location.replace('login.html');
+                    }
+                });
+            });
+
+        });
+        $( "#Cancel" ).on('click', function() 
+        {   
+            var jsonObject ={
+                             "action" : "UNSETE"
+                        };
+            $.ajax({
+                type: "POST",
+                url: "Data/applicationLayer.php",
+                data: jsonObject,
+                dataType: "json",
+                success: function(data)
+                {
+                },
+                error: function(errorMsg)
+                {
+
+                }
+            });
+            window.location.replace("admemployee.html"); 
+        });
+        $("#Create").on('click', function() 
+        {   
+            if ($("#idP").val()==""||$("#passwordP").val()==""||$("#nameP").val()==""||$("#lastnameP").val()==""||$("#birthdateP").val()==""
+                ||$("#telephoneP").val()==""||$("#addressP").val()==""){
+                alert("Fill all the spaces");
+            }
+            else{
+            var jsonObject ={
+                             "action" : "",
+                             "id":$("#idP").val(),
+                             "password":$("#passwordP").val(),
+                             "name":$("#nameP").val(),
+                             "lastname":$("#lastnameP").val(),
+                             "birthdate":$("#birthdateP").val(),
+                             "telephone":$("#telephoneP").val(),
+                             "address":$("#addressP").val()
+                        };
+            if (employeeID==0){ 
+                jsonObject["action"]="ADDE";
+            }
+            else{
+                jsonObject["action"]="UPDATEE";
+            }
+            $.ajax({
+                type: "POST",
+                url: "Data/applicationLayer.php",
+                data: jsonObject,
+                dataType: "json",
+                success: function(data)
+                {
+                    window.location.replace("admemployee.html"); 
+                },
+                error: function(errorMsg)
+                {
+                    alert('No funcionó');
+                }
+            });
+        }
+        });
+    </script>
+</body>
+
+</html>

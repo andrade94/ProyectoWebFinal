@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Product Management</title>
+
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+    <link href="../dist/css/timeline.css" rel="stylesheet">
+    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+    <link href="../bower_components/morrisjs/morris.css" rel="stylesheet">
+    <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+    <div id="wrapper" >
+
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+
+            <!-- Main Name of Application -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                </button>
+                <a class="navbar-brand" href="index.html">ePoss - Administrator - Edit Prodcut</a>
+            </div>
+
+            <!-- Right Side of Navigation (USER) -->
+            <ul class="nav navbar-top-links navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="administrator.html"><i class="fa fa-user fa-fw"></i> Home</a></li>
+                        <li class="divider"></li>
+                        <li><a id = "logoutP" href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
+<!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <ul class="timeline">
+                                <li>
+                                    <div class="timeline-badge"><i class="fa fa-check"></i>
+                                    </div>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <u><h4 class="timeline-title">Name</h4></u>
+                                        </div>
+                                        <div class="timeline-body">
+                                            <input class="form-control" placeholder="Name" id = "nameP">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="timeline-inverted">
+                                    <div class="timeline-badge"><i class="fa fa-check"></i>
+                                    </div>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <u><h4 class="timeline-title">Price</h4></u>
+                                        </div>
+                                        <div class="timeline-body">
+                                            <input class="form-control" placeholder="Price" id = "priceP">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="timeline-badge"><i class="fa fa-check"></i>
+                                    </div>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <u><h4 class="timeline-title">Image</h4></u>
+                                        </div>
+                                        <div class="timeline-body">
+                                            <input class="form-control" placeholder="Upload" id = "imageDirP">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="timeline-inverted">
+                                    <div class="timeline-badge"><i class="fa fa-check"></i>
+                                    </div>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <u><h4 class="timeline-title">Stock</h4></u>
+                                        </div>
+                                        <div class="timeline-body">
+                                            <input class="form-control" placeholder="Stock" id = "stockP">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                <div class="timeline-badge"><i class="fa fa-check"></i>
+                                    </div>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-body">
+                                            <button type="button" id = "Create" class="btn btn-success">Save</button>
+                                            <button type="button" id = "Cancel" class="btn btn-danger">Cancel</button>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-8 -->
+            </div>
+            <!-- /.row -->
+    </div>
+    <!-- /#wrapper -->
+
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
+    <script src="../bower_components/raphael/raphael-min.js"></script>
+    <script src="../dist/js/sb-admin-2.js"></script>
+
+    <script type = "text/javascript">
+        var productID = 0; 
+        $( document ).on('ready', function() 
+        {   
+            productID = 0; 
+            var jsonObject = {
+                             "action" : "RETPRODUCT"
+                        };
+            $.ajax({
+                type: "POST",
+                url: "Data/applicationLayer.php",
+                data: jsonObject,
+                dataType: "json",
+                success: function(data)
+                {
+                    productID = data.id; 
+                    $("#nameP").val(data.name);
+                    $("#imageDirP").val(data.imageDir);
+                    $("#stockP").val(data.stock);
+                    $("#priceP").val(data.price);
+                },
+                error: function(errorMsg)
+                {
+                }
+            });
+
+            $("#logoutP").on("click", function(e){
+                e.preventDefault();
+                $.ajax({
+                    type: "POST",
+                    data: {"action": "ENDSESSION"},
+                    url:"data/applicationLayer.php",
+                    dataType: "json",
+                    success: function(sessionObjJson)
+                    {
+                        alert("Sesion terminada exitosamente");
+                        window.location.replace('login.html');
+                    },
+                    error: function(errorMsg)
+                    {
+                        alert("Tu sesion expiro, vuelve a iniciar sesion.");
+                        window.location.replace('login.html');
+                    }
+                });
+            });
+
+
+        });
+        $( "#Cancel" ).on('click', function() 
+        {   
+            var jsonObject ={
+                             "action" : "UNSETP"
+                        };
+            $.ajax({
+                type: "POST",
+                url: "Data/applicationLayer.php",
+                data: jsonObject,
+                dataType: "json",
+                success: function(data)
+                {
+                },
+                error: function(errorMsg)
+                {
+
+                }
+            });
+            window.location.replace("admproduct.html"); 
+        });
+        $( "#Create" ).on('click', function() 
+        {   
+            if ($("#nameP").val()==""||$("#priceP").val()==""||$("#imageDirP").val()==""||$("#stockP").val()==""){
+                alert("Fill all the spaces");
+            }
+            else{
+            var jsonObject ={
+                             "action" : "",
+                             "id":productID,
+                             "name":$("#nameP").val(),
+                             "price":$("#priceP").val(),
+                             "imageDir":$("#imageDirP").val(),
+                             "stock":$("#stockP").val()
+                        };
+            if (productID==0){ 
+                jsonObject["action"]="ADD";
+            }
+            else{
+                jsonObject["action"]="UPDATEP";
+            }
+            $.ajax({
+                type: "POST",
+                url: "Data/applicationLayer.php",
+                data: jsonObject,
+                dataType: "json",
+                success: function(data)
+                {
+                    window.location.replace("admproduct.html"); 
+                },
+                error: function(errorMsg)
+                {
+
+                }
+            });
+        }
+        });
+    </script>
+</body>
+
+</html>

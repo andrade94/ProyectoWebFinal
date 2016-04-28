@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Quotation Elaboration</title>
+
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+    <link href="../dist/css/timeline.css" rel="stylesheet">
+    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+    <link href="../bower_components/morrisjs/morris.css" rel="stylesheet">
+    <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+
+            <!-- Main Name of Application -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                </button>
+                <a class="navbar-brand" href="index.html">ePoss - Administrator - Quotation Elaboration</a>
+            </div>
+
+            <!-- Right Side of Navigation (USER) -->
+            <ul class="nav navbar-top-links navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="administrator.html"><i class="fa fa-user fa-fw"></i> Home</a></li>
+                        <li class="divider"></li>
+                        <li><a id = "logoutP" href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li>
+                            </br>
+                            </br>
+                        </li>
+                    <!-- First Section -->
+                        <li>
+                            <a href="administrator.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                        </li>
+                    <!-- Second Section -->
+                        <li>
+                            <a href="admemployee.html"><i class="fa fa-bar-chart-o fa-fw"></i> Manage Accounts</a>
+                        </li>
+                    <!-- Third Section -->
+                        <li>
+                            <a href="quotover.html"><i class="fa fa-table fa-fw"></i> Quotations</a>
+                        </li>
+                    <!-- Fourth Section -->
+                        <li>
+                            <a href="admproduct.html"><i class="fa fa-edit fa-fw"></i> Product Management</a>
+                        </li>
+                    <!-- Fifth Section -->
+                        <li>
+                            <a href="admquotation.html"><i class="fa fa-edit fa-fw"></i> Create Quotation</a>
+                        </li>
+                        <li>
+                            </br>
+                            <div style = 'text-align:center; font-size: 150%'>Quotation</div>
+                            </br>
+                        </li>
+                    </ul>
+                </div>
+                <div id = "newQuot" style = 'font-size:120%; text-align:center'></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Quote Elaboration</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <div id ="productsD"></div>
+            <!-- /.row -->
+        <!--
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-comments fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">#1</div>
+                                    <div>Eduardo Andrade</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-green">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-tasks fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">#2</div>
+                                    <div>Francisco Canseco</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-yellow">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-shopping-cart fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">#3</div>
+                                    <div>Alfredo Salazar</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-red">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-support fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">#4</div>
+                                    <div>Fafarruffino</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        -->
+            <!-- /.row -->
+            <div class="row">
+                <button type="button" id = "Create" class="btn btn-primary">Create Quotation</button>
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+    
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
+    <script src="../bower_components/raphael/raphael-min.js"></script>
+    <script src="../dist/js/sb-admin-2.js"></script>
+
+    <script type = "text/javascript">
+        var products ={};
+        var details = {};
+        var total=0;
+
+        function refreshQuotation(){
+            $("#newQuot").empty();
+            total=0;
+            for (var property in details) {
+
+                if (details.hasOwnProperty(property)) {
+                    if (details[property][1]>0){
+                        $("#newQuot").append("<div>");
+                        total+=details[property][2];
+                        var element = document.createElement('input');
+                        element.type = 'button';
+                        element.data = property;
+                        element.value = details[property][0]+' '+details[property][1]+' $'+details[property][2]; 
+                        element.className = 'btn-warning';
+                        element.onclick = function() { 
+                            findListener(this.data);
+                        };
+                        document.getElementById("newQuot").appendChild(element);
+                        $("#newQuot").append("</div>");
+                    }
+                }
+            }
+            $("#newQuot").append("</br> <div class = 'fa-fa'> TOTAL: $" +total+"</div>");
+        }
+
+        function createD(id){
+            for (var property in details) {
+                if (details.hasOwnProperty(property)) {
+                    if (details[property][1]>0){
+                        var jsonObject ={
+                                "idProduct":property,
+                                "idQuotation":id,
+                                 "action" : "CDETAIL",
+                                 "price":parseFloat(details[property][2]/details[property][1]),
+                                 "quantity":parseInt(details[property][1]),
+                                 "total":parseFloat(details[property][2])
+                            };
+                        $.ajax({
+                            type: "POST",
+                            url: "Data/applicationLayer.php",
+                            data: jsonObject,
+                            dataType: "json",
+                            success: function(data)
+                            {
+                            },
+                            error: function(errorMsg)
+                            {
+                                console.log(errorMsg.statusText);
+                            }
+                        });
+                        updateP(property,parseInt(products[property][1])-parseInt(details[property][1]));
+                    }
+                }
+            }
+        }
+
+        function updateP(id,quantity){
+            var jsonObject ={
+                                "action":"UQUANTITY",
+                                "id":id,
+                                "quantity":quantity
+                            };
+                        $.ajax({
+                            type: "POST",
+                            url: "Data/applicationLayer.php",
+                            data: jsonObject,
+                            dataType: "json",
+                            success: function(data)
+                            {
+                                 alert("ENTRO");
+                            },
+                            error: function(errorMsg)
+                            {
+
+                            }
+                        });
+        }
+
+        function findListener(data){
+            details[data][1]=0;
+            details[data][2]=0;
+            refreshQuotation();
+        }
+
+        function myFunction(data){
+            if (!details.hasOwnProperty(data)){
+                details[data]=[products[data][0],0,0];
+            }
+            if (details[data][1]<products[data][1]){
+                details[data][1]++;
+                details[data][2]+=parseFloat(products[data][2]);
+            }
+            else{
+                alert("There is not enough stock");
+            }
+            refreshQuotation();
+        }
+        function loadP(){
+            $("#productsD").empty();
+            $("#newQuot").empty();
+            var jsonObject = {
+                    "action" : "LOADPRODUCTS"
+            };
+            $.ajax({
+                type: "POST",
+                url: "Data/applicationLayer.php",
+                data: jsonObject,
+                dataType: "json",
+                success: function(data)
+                {
+                    var row="";
+                    products={};
+                    for (var j = 0 ; j < (data.length/4); j++){
+                        row += "<div class = 'row'>";
+                        for (var i = 0; i < 4; i++){
+                            if (i+(j*4) ==data.length)
+                                break;
+                            if (data[i].stock == -1){
+                                var stock = "D";
+                            }
+                            else{
+                                var stock = data[i].stock;
+                            }
+
+                            products[data[i+(j*4)].id]=[data[i].name,data[i].stock,data[i].price];
+                            row += "<div class='col-lg-3 col-md-6'>";
+                            row += "<div class='panel panel-primary'>";
+                            row += "<div class='panel-heading'>";
+                            row += "<div class='row'>";
+                            row += "<div class='col-xs-3'>";
+                            row += "<img style='height: 200%; width: 200%;' src = '"+data[i].imageDir+"'></img>";
+                            row += "</div>";
+                            row += "<div class='col-xs-9 text-right'>";
+                            row += "<div class='huge'>$"+data[i].price+"</div>";
+                            row += "<div>"+data[i+(j*4)].name+" - "+stock+"</div>";
+                            row += "</div>"
+                            row += "</div>"
+                            row += "</div>"
+                            row += "<a href='#''>"
+                            row += "<div class='panel-footer' onclick='myFunction("+data[i+(j*4)].id+")'>"
+                            row += "<span class='pull-left'>View Details</span>"
+                            row += "<span class='pull-right'><i class='fa fa-arrow-circle-right'></i></span>"
+                            row += "<div class='clearfix'></div>"
+                            row += "</div>"
+                            row += "</a>"
+                            row += "</div>"
+                            row += "</div>"
+                        }
+                        row += "</div>"
+                    }
+                    $("#productsD").append(row);
+                },
+                error: function(errorMsg)
+                {
+                    console.log(errorMsg.statusText);
+                }
+          });
+        }
+        $( document ).on('ready', function() 
+        {
+            total=0;
+            loadP();
+            $( "#Create" ).on('click', function() 
+            {   
+
+                if(total>0){
+                    var card = prompt("Enter last four numbers of bank card","0000");
+                    var jsonObject ={
+                                 "action" : "QUOT",
+                                 "card":card,
+                                 "total":total
+                            };
+                    $.ajax({
+                        type: "POST",
+                        url: "Data/applicationLayer.php",
+                        data: jsonObject,
+                        dataType: "json",
+                        success: function(data)
+                        {
+                            createD(data.id);
+                            products={};
+                            details={};
+                            loadP();
+                            refreshQuotation();
+                        },
+                        error: function(errorMsg)
+                        {
+
+                        }
+                    });
+                }
+            });
+
+
+            $("#logoutP").on("click", function(e){
+                e.preventDefault();
+                $.ajax({
+                    type: "POST",
+                    data: {"action": "ENDSESSION"},
+                    url:"data/applicationLayer.php",
+                    dataType: "json",
+                    success: function(sessionObjJson)
+                    {
+                        alert("Sesion terminada exitosamente");
+                        window.location.replace('login.html');
+                    },
+                    error: function(errorMsg)
+                    {
+                        alert("Tu sesion expiro, vuelve a iniciar sesion.");
+                        window.location.replace('login.html');
+                    }
+                });
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>

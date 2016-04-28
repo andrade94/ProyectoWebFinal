@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>ePOSS</title>
+
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+    <link href="../dist/css/logineposs.css" rel="stylesheet">
+    <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="headerS">ePOSS</h1>
+                </div>
+                <div class="col-md-4 col-md-offset-4">
+                    <div class="login-panel panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Please sign in with your ePOSS account.</h3>
+                        </div>
+                        <div class="panel-body">
+                            <form role="form">
+                                <fieldset>
+                                    <div class="form-group">
+                                        <input class="form-control" id = "UserInput" placeholder="Username" name="username" type="User" autofocus>
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control" id = "PasswordInput" placeholder="Password" name="password" type="password" value="">
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input name="remember" id = "rmb" type="checkbox" value="Remember Me">Remember Me
+                                        </label>
+                                    </div>
+                                    <input id = "btnLogin" class="btn btn-lg btn-success btn-block" type="submit" value="Login"/>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
+    <script src="../dist/js/sb-admin-2.js"></script>
+
+</body>
+
+    <script type = "text/javascript">
+        $(document).on("ready", function(){
+            var jsonObject = {
+                             "action" : "COOKIE"
+                        };
+            $.ajax({
+                type: "POST",
+                url: "Data/applicationLayer.php",
+                data: jsonObject,
+                dataType: "json",
+                success: function(cookieJson)
+                {
+                    $("#UserInput").val(cookieJson.cookieValue);
+                },
+                error: function(errorMsg)
+                {
+                    console.log(errorMsg.statusText);
+                }
+            });
+            $("#btnLogin").on("click",function(e){
+                    e.preventDefault();
+                    var usName = $('#UserInput').val();
+                    var pssword = $('#PasswordInput').val();
+                    var rec = 0;
+                    if ($("#rmb").is(":checked")){ rec = 1;}
+                    if(usName === "" || pssword === ""){ alert("Introduce data.") }
+                    else{ 
+                        var jsonObject = {
+                            "action" : "LOGIN",
+                            "id" : usName,
+                            "password" : pssword,
+                            "box"      : document.getElementById("rmb").checked
+                        };
+                        $.ajax({
+                            type: "POST",
+                            url: "Data/applicationLayer.php",
+                            dataType: "json",
+                            data: jsonObject,
+                            contentType: "application/x-www-form-urlencoded",
+                            success: function(jsonData) {
+                                if(jsonData.type == 'A'){
+                                window.location.replace("administrator.html");}
+                                else if(jsonData.type == 'E'){
+                                    window.location.replace("employee.html");
+                                }
+                            },
+                            error: function(errorMsg){
+                                alert(errorMsg.statusText);
+                            }
+                         });
+                    }
+              });
+        });
+    </script>
+
+</html>

@@ -1,0 +1,19 @@
+/*!
+ * Start Bootstrap - SB Admin 2 Bootstrap Admin Theme (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+body {
+        background: url(login.jpg) no-repeat center center fixed;
+        background-size: cover;
+}
+
+.headerS {
+    text-align: right;
+    color: black;
+    padding-bottom: 9px;
+    margin: 40px 0 20px;
+    border-bottom: 1px solid #eee;
+    font-family: "Times New Roman", Times, serif;
+}
